@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>構文練習ノート</title>
+</head>
+<style>
+    .parent {
+        height: 250px;
+        width: 1200px;
+        background-color: rgb(198, 212, 240);
+        overflow-x: scroll;
+    }
+
+    .child {
+        display: flex;
+    }
+
+
+    .word_card {
+        margin: 0px
+    }
+
+
+    .btn {
+        font-size: 1.6rem;
+        font-weight: 700;
+        line-height: 1.5;
+        position: relative;
+        display: inline-block;
+        /*padding: 1rem 4rem;*/
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-transition: all 0.3s;
+        transition: all 0.3s;
+        text-align: center;
+        vertical-align: middle;
+        text-decoration: none;
+        letter-spacing: 0.1em;
+        color: #212529;
+        border-radius: 0.5rem;
+        border: 8px double #0090bb;
+        height: 120px;
+        width: 200px;
+        white-space: nowrap;
+        overflow-x: scroll;
+    }
+
+    #card {
+        font-size: 1.6rem;
+        font-weight: 700;
+        line-height: 1.5;
+        position: relative;
+        display: inline-block;
+        /*padding: 1rem 4rem;*/
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-transition: all 0.3s;
+        transition: all 0.3s;
+        text-align: center;
+        vertical-align: middle;
+        text-decoration: none;
+        letter-spacing: 0.1em;
+        color: #212529;
+        border-radius: 0.5rem;
+        border: 8px double #011274;
+        height: 120px;
+        width: 200px;
+        white-space: nowrap;
+        overflow-x: scroll;
+    }
+
+    #quiz-text {
+        text-align: center;
+        display: none;
+        /* 最初は非表示に設定 */
+    }
+
+    #quiz-container {
+        text-align: center;
+        display: none;
+        /* 最初は非表示に設定 */
+    }
+
+    h1 {
+        border-bottom: 5px solid rgb(40, 58, 92);
+        width: 400px;
+    }
+
+    h2 {
+        border-left: 7px solid rgba(176, 197, 236, 0.808);
+    }
+
+    .button-container {
+        display: flex;
+        /* 隙間の幅を調整 */
+        gap: 5px;
+    }
+
+    .first-class {
+        display: flex;
+        gap: 5px;
+    }
+
+
+    .image {
+        border: 2px solid rgb(1, 24, 82);
+        /* 枠線 */
+        border-radius: 0.25em;
+        /* 角丸 */
+        padding: 0.5em;
+        /* 内側の余白量 */
+        background-color: rgb(251, 252, 253);
+        /* 背景色 */
+        width: 600px;
+        /* 横幅 */
+        height: 25px;
+        /* 高さ */
+        font-size: 1em;
+        /* 文字サイズ */
+        line-height: 1.2;
+        /* 行の高さ */
+    }
+
+    .response {
+        border: 2px solid rgb(1, 24, 82);
+        border-radius: 0.25em;
+        padding: 0.5em;
+        background-color: rgb(251, 252, 253);
+        width: 600px;
+        height: 25px;
+        font-size: 1em;
+        line-height: 1.2;
+    }
+
+    .font {
+        font-size: 20px;
+    }
+
+    .flame {
+        height: 50px;
+        width: 1300px;
+        display: flex;
+        background-color: rgb(248, 224, 246, 0.808);
+        border-left: 7px solid rgb(252, 193, 252);
+    }
+
+    .prc_word {
+        white-space: nowrap;
+        height: 40px;
+        width: 600px;
+        font-size: 1.6rem;
+        margin-left: 5px;
+        background-color: rgb(215, 236, 253);
+        margin-top: 5px;
+        display: flex;
+        align-items: center;
+        overflow-x: scroll;
+        scrollbar-width: thin;
+    }
+
+    .flame-card {
+        font-size: 20px;
+        margin-left: 5px;
+    }
+
+
+    input.check {
+        border: 2px solid #0b147b;
+        border-radius: 0;
+        background: #fff;
+        border-radius: 5px;
+        height: 40px;
+        width: 55px;
+        font-size: 1.0rem;
+        margin-top: 5px;
+    }
+
+    input.check:hover {
+        color: #fff;
+        background: #0b147b;
+    }
+</style>
+
+<body>
+    <main>
+        <h1>構文練習ノート</h1>
+        <!-- <h2>構文入力</h2>
+        <form class="font" onsubmit="showAlert(); return false;">
+            日本語の意味： <input class="image" type="text" id="japanese" placeholder="りんご" />
+            <br>
+            英単語　　　： <input class="image" type="text" id="english" placeholder="apple" />
+            <br>
+            <input class="button" type="submit" value="保存" />
+            <input class="button" type="reset" value="formを空欄に戻す" />
+        </form> -->
+        <h2>構文練習帳</h2>
+        <div id="quiz-container"></div>
+        <div class="font" id="question"></div>
+        <div id="start"></div>
+        <input class="response" type="text" id="answer-input" placeholder="ここに答えを入力">
+        <div id="reply"></div>
+        <div class="button-container">
+            <div type="submit" id="submit-btn"></div>
+            <div id="next"></div>
+            <div id="end-btn"></div>
+        </div>
+        <div id="end"></div>
+        <div id="finish-btn"></div>
+
+        <!-- <h2>構文カード検索</h2>
+        <form class="font" onsubmit="searchWord(); return false;">
+            検索したい構文を入力してください：<input class="image" type="text" id="key-word" placeholder="りんご">
+            <br>
+            <input class="button" type="submit" id="search" value="検索" />
+        </form>
+        <div class="child" id="key-card.ja"></div>
+        <div class="child" id="key-card.eg"></div>
+        <div id="message"></div>
+        <div id="message_btn"></div> -->
+
+
+        <h2>構文カード</h2>
+        <div class="parent">
+            <div class="child" id="memo_1"></div>
+            <div class="child" id="memo_2"></div>
+        </div>
+        <div class="button-container">
+            <div id="shuffle-btn"></div>
+            <div id="reset-btn"></div>
+            <div id="white-btn"></div>
+            <div id="block-btn"></div>
+        </div>
+
+        <h2>練習ノート</h2>
+        <div id="container"></div>
+        <template id="flame-template">
+            <div class="flame">
+                <!-- りんご：apple -->
+                <!-- form -->
+                <!-- 確認ボタン -->
+                <div class="prc_word"></div>
+                <form class="flame-card" onsubmit="showCard(); return false;">
+                    <input class="image" type="text" placeholder="apple">
+                    <input class="check" type="submit" value="確認">
+                </form>
+            </div>
+        </template>
+        <div id="text"></div>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
